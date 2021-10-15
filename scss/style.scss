@@ -1,0 +1,63 @@
+// @use "variables";
+@use "mixin";
+@use "extend";
+$color: white;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: $color;
+  // background: $color2;
+  min-height: 100vh;
+}
+
+//modules
+// body {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: variables.$color2;
+//   min-height: 100vh;
+// }
+
+// h3{
+//     color: variables.$color1;
+//     font-family: variables.$font_family_main;
+//     font-size: variables.$font_size_title;
+// }
+
+//mixins
+// khai bao @mixin nameMixin(){}
+// su dung @include nameMinxin();
+
+@mixin bgc($bcgcolor: red) {
+  background-color: $bcgcolor;
+}
+.box {
+  @include bgc(rgb(87, 99, 82));
+
+  @include mixin.size(100px, 100px);
+  @include mixin.box-shadow(10px, 10px, 20px, 0px, true);
+  @include mixin.minWidth(970px) {
+    display: none;
+  }
+}
+// .message-shared {
+//   border: 1px solid #ccc;
+//   padding: 10px;
+//   width: 350px;
+//   height: 350px;
+//   color: white;
+// }
+// extend
+.success {
+  @extend .message-shared;
+  background-color: green;
+  width: (600px/1000px) * 100%;
+}
+
+.error {
+  @extend .message-shared;
+  background-color: red;
+}
